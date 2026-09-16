@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Nice Slice is coming soon to Dayton, Ohio. 18-inch pies, quarter-pie slices, scratch-made dough, and serious ingredients.">
+  <title>Nice Slice | Coming Soon to Dayton, Ohio</title>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: #111111;
+      color: #ffffff;
+      font-family: Arial, Helvetica, sans-serif;
+      text-align: center;
+    }
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 50px 20px;
+      background: #111111;
+    }
+    .logo {
+      width: min(650px, 90%);
+      height: auto;
+      margin-bottom: 35px;
+    }
+    .eyebrow {
+      color: #f2c94c;
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: 4px;
+      margin: 0 0 15px;
+    }
+    h1 {
+      margin: 0;
+      color: #ffffff;
+      font-size: clamp(42px, 8vw, 90px);
+      line-height: 0.95;
+      font-weight: 900;
+      letter-spacing: -2px;
+    }
+    .red { color: #d92323; }
+    .hero-copy {
+      max-width: 750px;
+      margin: 28px auto 0;
+      font-size: clamp(20px, 3vw, 28px);
+      line-height: 1.45;
+      font-weight: 700;
+    }
+    .gold-line {
+      width: 90px;
+      height: 6px;
+      background: #f2c94c;
+      margin: 35px auto;
+    }
+    .story {
+      background: #f4c542;
+      color: #111111;
+      padding: 90px 20px;
+    }
+    .story-inner {
+      max-width: 850px;
+      margin: 0 auto;
+    }
+    .story h2 {
+      margin: 0 0 35px;
+      font-size: clamp(36px, 6vw, 64px);
+      line-height: 1;
+      font-weight: 900;
+    }
+    .story p {
+      font-size: clamp(18px, 2.5vw, 23px);
+      line-height: 1.7;
+      font-weight: 600;
+    }
+    .question {
+      margin: 45px 0;
+      color: #c91f1f;
+      font-size: clamp(30px, 5vw, 48px);
+      line-height: 1.1;
+      font-weight: 900;
+    }
+    .slice-section {
+      padding: 90px 20px;
+      background: #c91f1f;
+      color: #ffffff;
+    }
+    .slice-section h2 {
+      max-width: 950px;
+      margin: 0 auto;
+      font-size: clamp(38px, 7vw, 76px);
+      line-height: 1.05;
+      font-weight: 900;
+    }
+    .slice-section p {
+      margin: 30px auto 0;
+      max-width: 700px;
+      font-size: clamp(20px, 3vw, 28px);
+      line-height: 1.5;
+      font-weight: 700;
+    }
+    .quarter { color: #f4c542; }
+    .coming {
+      padding: 90px 20px;
+      background: #111111;
+    }
+    .coming h2 {
+      margin: 0;
+      color: #f4c542;
+      font-size: clamp(44px, 8vw, 86px);
+      line-height: 1;
+      font-weight: 900;
+    }
+    .coming h3 {
+      margin: 20px 0 0;
+      font-size: clamp(25px, 4vw, 40px);
+      font-weight: 900;
+    }
+    .facebook {
+      display: inline-block;
+      margin-top: 45px;
+      padding: 18px 30px;
+      border: 3px solid #ffffff;
+      border-radius: 8px;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+    .facebook:hover {
+      background: #ffffff;
+      color: #111111;
+    }
+    footer {
+      padding: 30px 20px;
+      background: #080808;
+      color: #aaaaaa;
+      font-size: 14px;
+    }
+    @media (max-width: 600px) {
+      .hero { min-height: 90vh; }
+      .story, .slice-section, .coming { padding: 65px 20px; }
+      .logo { width: 95%; }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <img src="Logo.png" alt="Nice Slice" class="logo">
+    <p class="eyebrow">DAYTON, OHIO</p>
+    <h1>WE'RE JUST<br>GETTING <span class="red">STARTED.</span></h1>
+    <div class="gold-line"></div>
+    <p class="hero-copy">
+      18-inch pies. Quarter-pie slices.<br>
+      Scratch-made dough. Serious ingredients.
+    </p>
+  </section>
+
+  <section class="story">
+    <div class="story-inner">
+      <h2>PIZZA SHOULD BE SIMPLE.<br>GREAT PIZZA ISN'T.</h2>
+      <p>
+        Nice Slice started with a simple idea: make a damn good slice
+        and care about every decision that goes into it.
+      </p>
+      <p>
+        Our dough is made from scratch and given time to develop.
+        Our ingredients are chosen because they have a job to do —
+        not because a longer topping list sounds impressive.
+        And every pizza is built around balance, consistency and one question:
+      </p>
+      <div class="question">IS EVERY INGREDIENT<br>DOING ITS JOB?</div>
+      <p>We're building Nice Slice right here in Dayton, Ohio.</p>
+      <p><strong>We're just getting started.</strong></p>
+    </div>
+  </section>
+
+  <section class="slice-section">
+    <h2>
+      18-INCH PIES.<br>
+      <span class="quarter">¼-PIE SLICES.</span><br>
+      SERIOUS INGREDIENTS.
+    </h2>
+    <p>
+      Yes. One slice is one quarter of an 18-inch pizza.
+      We weren't kidding when we said size matters.
+    </p>
+  </section>
+
+  <section class="coming">
+    <h2>COMING SOON.</h2>
+    <h3>DAYTON, OHIO</h3>
+    <!-- Replace # with the Nice Slice Facebook page URL when ready. -->
+    <a class="facebook" href="https://www.facebook.com/profile.php?id=61592067718554&mibextid=wwXIfr&mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">
+      FOLLOW NICE SLICE ON FACEBOOK
+    </a>
+  </section>
+
+  <footer>&copy; 2026 Nice Slice. All rights reserved. 
+
+</footer>
+</body>
+</html>
