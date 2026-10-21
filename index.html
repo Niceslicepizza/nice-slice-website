@@ -1,219 +1,195 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#c91f2d">
   <meta name="description" content="Nice Slice is coming soon to Dayton, Ohio. 18-inch pies, quarter-pie slices, scratch-made dough, and serious ingredients.">
-  <title>Nice Slice | Coming Soon to Dayton, Ohio</title>
+  <title>Nice Slice | Dayton, Ohio</title>
   <style>
+    :root {
+      --red: #c91f2d;
+      --red-dark: #a91824;
+      --ink: #171717;
+      --gold: #e5b83f;
+      --cream: #fffaf0;
+      --line: #e9e2d7;
+      --muted: #615e59;
+      --display: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+      --fun: "Trebuchet MS", "Segoe UI", cursive;
+      --body: Arial, Helvetica, sans-serif;
+    }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      background: #111111;
-      color: #ffffff;
-      font-family: Arial, Helvetica, sans-serif;
-      text-align: center;
+    body { margin: 0; color: var(--ink); background: #fff; font-family: var(--body); }
+    a { color: inherit; }
+    .topline { height: 7px; background: var(--red); }
+    header {
+      max-width: 1180px; margin: auto; padding: 18px 28px;
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
     }
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 50px 20px;
-      background: #111111;
+    .brand { display: inline-flex; align-items: center; text-decoration: none; }
+    .logo { display:block; width:min(520px, 60vw); height:auto; object-fit:contain; }
+    nav { display: flex; align-items: center; gap: 24px; font-size: 14px; font-weight: 700; }
+    nav a { text-decoration: none; }
+    nav a:hover { color: var(--red); }
+    .nav-cta { padding: 12px 17px; border-radius: 5px; background: var(--red); color: #fff; }
+    .nav-cta:hover { background: var(--red-dark); color: #fff; }
+    .hero { position: relative; overflow: hidden; background: var(--ink); color: #fff; }
+    .hero-inner {
+      max-width: 1180px; min-height: 365px; margin: auto; padding: 54px 28px 60px;
+      display: grid; grid-template-columns: 1.2fr .8fr; align-items: center; gap: 36px;
     }
-    .logo {
-      width: min(650px, 90%);
-      height: auto;
-      margin-bottom: 35px;
+    .eyebrow { margin: 0 0 12px; color: var(--gold); font-size: 12px; font-weight: 900; letter-spacing: .16em; text-transform: uppercase; }
+    h1 { max-width: 690px; margin: 0; font: 900 clamp(48px, 7vw, 82px)/.9 var(--display); letter-spacing: -.025em; text-transform: uppercase; }
+    .red { color: var(--red); }
+    .hero-copy { max-width: 560px; margin: 20px 0 26px; color: #fff8ee; font-size: 18px; line-height: 1.6; }
+    .button { display: inline-flex; align-items: center; justify-content: center; padding: 14px 21px; border: 0; border-radius: 5px; background: var(--gold); color: var(--ink); text-decoration: none; font-weight: 900; }
+    .button:hover { background: #f0ca62; }
+    .pizza-photo {
+      justify-self:center; width:min(34vw,370px); aspect-ratio:1;
+      filter:drop-shadow(0 12px 12px rgba(0,0,0,.24));
     }
-   .tagline-banner { width: min(1120px, 100%); display: flex; align-items: center; justify-content: space-around; gap: clamp(5px, 1.4vw, 22px); padding: 15px 8px; margin: 0 auto 24px; border-top: 1px solid #b69a3d; border-bottom: 1px solid #b69a3d; background: #0d0d0d; }
-.tagline-phrase { color: #f3f0e7; font-size: clamp(8px, 1.55vw, 17px); line-height: 1.2; font-weight: 800; letter-spacing: 1px; white-space: nowrap; }
-.quarter-mark { width: clamp(19px, 3vw, 30px); height: clamp(19px, 3vw, 30px); flex: 0 0 auto; }
-.quarter-mark path { fill: #f2c94c; stroke: #d92323; stroke-width: 4; stroke-linecap: round; } .eyebrow {
-      color: #f2c94c;
-      font-size: 18px;
-      font-weight: 900;
-      letter-spacing: 4px;
-      margin: 0 0 15px;
+    .pizza-photo img { display:block; width:100%; height:100%; object-fit:contain; }
+    .tagline { padding: 13px 20px; background: var(--red); color: #fff; text-align: center; font-size: 11px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+    .quarter { display: inline-block; margin: 0 11px; color: var(--gold); font-size: 15px; }
+    main { max-width: 1180px; margin: auto; padding: 58px 28px 74px; }
+    .process {
+      padding: 34px; border-radius: 10px; background: var(--cream); display: grid;
+      grid-template-columns: 1fr 1fr; gap: 28px; align-items: center;
     }
-    h1 {
-      margin: 0;
-      color: #ffffff;
-      font-size: clamp(42px, 8vw, 90px);
-      line-height: 0.95;
-      font-weight: 900;
-      letter-spacing: -2px;
+    .process h2, .requests h2 { margin: 0; color: var(--red); font: italic 800 clamp(32px, 4vw, 48px)/.98 var(--fun); letter-spacing: -.04em; }
+    .process p { margin: 14px 0 0; max-width: 600px; color: #4c4943; line-height: 1.65; font-size: 17px; }
+    .time-stamps { display: flex; gap: 12px; }
+    .time { flex: 1; padding: 20px 15px; border: 1px solid #eadbbd; border-radius: 7px; background: #fff; text-align: center; }
+    .time strong { display: block; color: var(--red); font: 900 34px/.95 var(--display); }
+    .time span { display: block; margin-top: 8px; color: var(--muted); font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+    .menu { padding-top: 62px; scroll-margin-top: 24px; }
+    .section-heading { margin: 0; font: 900 clamp(34px, 5vw, 54px)/.95 var(--display); text-transform: uppercase; }
+    .section-intro { margin: 12px 0 28px; color: var(--muted); line-height: 1.55; }
+    .menu-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .pizza-card { min-height: 185px; padding: 25px 26px 23px; border: 1px solid var(--line); border-radius: 9px; background: #fff; box-shadow: 0 4px 16px rgba(34,24,12,.045); }
+    .card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+    .pizza-card h3 { margin: 0; font: 900 30px/.95 var(--display); text-transform: uppercase; }
+    .slice-mark { flex: 0 0 auto; display: grid; place-items: center; width: 41px; height: 41px; border-radius: 50%; background: var(--cream); color: var(--red); font-size: 23px; }
+    .pizza-card p { max-width: 470px; margin: 16px 0 0; color: #514e49; line-height: 1.55; }
+    .requests { margin-top: 28px; padding: 26px 30px; border-left: 5px solid var(--gold); background: #f8f7f4; scroll-margin-top: 24px; }
+    .requests h2 { font-size: 33px; }
+    .requests p { margin: 10px 0 0; color: #4c4943; line-height: 1.6; }
+    .story { margin-top: 58px; padding: 42px 30px; background: var(--red); color: #fff; text-align: center; }
+    .story-inner { max-width: 850px; margin: auto; }
+    .story h2 { margin: 0 0 18px; font: 900 clamp(32px, 5vw, 52px)/.98 var(--display); text-transform: uppercase; }
+    .story p { margin: 12px auto 0; max-width: 760px; font-size: 17px; line-height: 1.7; }
+    .coming { padding: 56px 20px; background: var(--ink); color: #fff; text-align: center; }
+    .coming h2 { margin: 0; color: var(--gold); font: 900 clamp(38px, 7vw, 64px)/1 var(--display); }
+    .coming p { margin: 12px 0 0; font-size: 18px; font-weight: 700; }
+    .facebook { display: inline-block; margin-top: 26px; padding: 14px 22px; border: 2px solid #fff; border-radius: 5px; color: #fff; text-decoration: none; font-size: 14px; font-weight: 900; letter-spacing: .06em; }
+    .facebook:hover { background: #fff; color: var(--ink); }
+    footer { padding: 22px 20px; background: #080808; color: #aaa; text-align: center; font-size: 13px; }
+    footer strong { color: var(--gold); }
+    @media (max-width: 720px) {
+      header { padding: 16px 19px; }
+      .logo { width:min(390px, 72vw); }
+      nav { gap: 13px; }
+      nav a:not(.nav-cta) { display: none; }
+      .hero-inner { min-height: auto; padding: 45px 22px; grid-template-columns: 1fr; }
+      .pizza-photo { width: min(76vw, 340px); margin: 8px auto 0; }
+      .hero-copy { font-size: 16px; }
+      main { padding: 35px 19px 48px; }
+      .process { grid-template-columns: 1fr; padding: 27px 22px; }
+      .time-stamps { max-width: 400px; }
+      .menu { padding-top: 46px; }
+      .menu-grid { grid-template-columns: 1fr; }
+      .pizza-card { min-height: 0; padding: 22px; }
+      .requests { padding: 23px 21px; }
+      .story { margin-top: 42px; padding: 38px 22px; }
     }
-    .red { color: #d92323; }
-    .hero-copy {
-      max-width: 750px;
-      margin: 28px auto 0;
-      font-size: clamp(20px, 3vw, 28px);
-      line-height: 1.45;
-      font-weight: 700;
-    }
-    .gold-line {
-      width: 90px;
-      height: 6px;
-      background: #f2c94c;
-      margin: 35px auto;
-    }
-    .story {
-      background: #f4c542;
-      color: #111111;
-      padding: 90px 20px;
-    }
-    .story-inner {
-      max-width: 850px;
-      margin: 0 auto;
-    }
-    .story h2 {
-      margin: 0 0 35px;
-      font-size: clamp(36px, 6vw, 64px);
-      line-height: 1;
-      font-weight: 900;
-    }
-    .story p {
-      font-size: clamp(18px, 2.5vw, 23px);
-      line-height: 1.7;
-      font-weight: 600;
-    }
-    .question {
-      margin: 45px 0;
-      color: #c91f1f;
-      font-size: clamp(30px, 5vw, 48px);
-      line-height: 1.1;
-      font-weight: 900;
-    }
-    .slice-section {
-      padding: 90px 20px;
-      background: #c91f1f;
-      color: #ffffff;
-    }
-    .slice-section h2 {
-      max-width: 950px;
-      margin: 0 auto;
-      font-size: clamp(38px, 7vw, 76px);
-      line-height: 1.05;
-      font-weight: 900;
-    }
-    .slice-section p {
-      margin: 30px auto 0;
-      max-width: 700px;
-      font-size: clamp(20px, 3vw, 28px);
-      line-height: 1.5;
-      font-weight: 700;
-    }
-    .quarter { color: #f4c542; }
-    .coming {
-      padding: 90px 20px;
-      background: #111111;
-    }
-    .coming h2 {
-      margin: 0;
-      color: #f4c542;
-      font-size: clamp(44px, 8vw, 86px);
-      line-height: 1;
-      font-weight: 900;
-    }
-    .coming h3 {
-      margin: 20px 0 0;
-      font-size: clamp(25px, 4vw, 40px);
-      font-weight: 900;
-    }
-    .facebook {
-      display: inline-block;
-      margin-top: 45px;
-      padding: 18px 30px;
-      border: 3px solid #ffffff;
-      border-radius: 8px;
-      color: #ffffff;
-      text-decoration: none;
-      font-size: 17px;
-      font-weight: 900;
-      letter-spacing: 1px;
-    }
-    .facebook:hover {
-      background: #ffffff;
-      color: #111111;
-    }
-    footer {
-      padding: 30px 20px;
-      background: #080808;
-      color: #aaaaaa;
-      font-size: 14px;
-    }
-    @media (max-width: 600px) {
-      .hero { min-height: 90vh; }
-      .story, .slice-section, .coming { padding: 65px 20px; }
-      .logo { width: 95%; }
-    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   </style>
 </head>
 <body>
-  <section class="hero">
-    <img src="Logo.png" alt="Nice Slice" class="logo"> 
-      <div class="tagline-banner" aria-label="Giant slices. Scratch kitchen. Big flavor.">
-  <span class="tagline-phrase">GIANT SLICES</span>
-  <svg class="quarter-mark" viewBox="0 0 48 48" aria-hidden="true"><path d="M4 44 A40 40 0 0 1 44 4 L44 44 Z"/></svg>
-  <span class="tagline-phrase">SCRATCH KITCHEN</span>
-  <svg class="quarter-mark" viewBox="0 0 48 48" aria-hidden="true"><path d="M4 44 A40 40 0 0 1 44 4 L44 44 Z"/></svg>
-  <span class="tagline-phrase">BIG FLAVOR</span>
-</div>
-    <p class="eyebrow">DAYTON, OHIO</p>
-    <h1>WE'RE JUST<br>GETTING <span class="red">STARTED.</span></h1>
-    <div class="gold-line"></div>
-    <p class="hero-copy">
-      18-inch pies. Quarter-pie slices.<br>
-      Scratch-made dough. Serious ingredients.
-    </p>
-  </section>
+  <div class="topline"></div>
+  <header>
+    <a class="brand" href="#top" aria-label="Nice Slice home">
+      <img src="Logo.png" alt="Nice Slice" class="logo">
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="#our-dough">Our dough</a>
+      <a href="#menu">The slices</a>
+      <a class="nav-cta" href="#menu">See the menu</a>
+    </nav>
+  </header>
 
-  <section class="story">
-    <div class="story-inner">
-      <h2>PIZZA SHOULD BE SIMPLE.<br>GREAT PIZZA ISN'T.</h2>
-      <p>
-        Nice Slice started with a simple idea: make a damn good slice
-        and care about every decision that goes into it.
-      </p>
-      <p>
-        Our dough is made from scratch and given time to develop.
-        Our ingredients are chosen because they have a job to do —
-        not because a longer topping list sounds impressive.
-        And every pizza is built around balance, consistency and one question:
-      </p>
-      <div class="question">IS EVERY INGREDIENT<br>DOING ITS JOB?</div>
-      <p>We're building Nice Slice right here in Dayton, Ohio.</p>
-      <p><strong>We're just getting started.</strong></p>
+  <section class="hero" id="top">
+    <div class="hero-inner">
+      <div>
+        <p class="eyebrow">Dayton, Ohio · Coming soon</p>
+        <h1>WE'RE JUST<br>GETTING <span class="red">STARTED.</span></h1>
+        <p class="hero-copy">18-inch pies. Quarter-pie slices. Scratch-made dough. Serious ingredients. We’re building something big right here in Dayton.</p>
+        <a class="button" href="#menu">Meet your next slice <span class="quarter" aria-hidden="true">◔</span></a>
+      </div>
+      <div class="pizza-photo" aria-label="Illustration of a pizza cut into four equal slices, with one quarter highlighted"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iODAwIiB2aWV3Qm94PSIwIDAgODAwIDgwMCI+CjxkZWZzPgogPHJhZGlhbEdyYWRpZW50IGlkPSJjcnVzdCIgY3g9IjQ0JSIgY3k9IjQwJSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZjZkNDhhIi8+PHN0b3Agb2Zmc2V0PSIuNzYiIHN0b3AtY29sb3I9IiNkOTlhNDMiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNhODVlMjQiLz48L3JhZGlhbEdyYWRpZW50PgogPHJhZGlhbEdyYWRpZW50IGlkPSJjaGVlc2UiIGN4PSI0NiUiIGN5PSI0MiUiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmZDk2YiIvPjxzdG9wIG9mZnNldD0iLjc4IiBzdG9wLWNvbG9yPSIjZjViYjRlIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZTY5YjM2Ii8+PC9yYWRpYWxHcmFkaWVudD4KIDxjbGlwUGF0aCBpZD0icGllIj48Y2lyY2xlIGN4PSI0MDAiIGN5PSI0MDAiIHI9IjM2NSIvPjwvY2xpcFBhdGg+CiA8ZmlsdGVyIGlkPSJzaGFkb3ciIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE0MCUiPjxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSIxNiIgc3RkRGV2aWF0aW9uPSIxMyIgZmxvb2QtY29sb3I9IiMwMDAiIGZsb29kLW9wYWNpdHk9Ii4zNiIvPjwvZmlsdGVyPgo8L2RlZnM+CjxnIGZpbHRlcj0idXJsKCNzaGFkb3cpIj4KIDxjaXJjbGUgY3g9IjQwMCIgY3k9IjQwMCIgcj0iMzc0IiBmaWxsPSJ1cmwoI2NydXN0KSIgc3Ryb2tlPSIjZjFjZjY5IiBzdHJva2Utd2lkdGg9IjEyIi8+CiA8Y2lyY2xlIGN4PSI0MDAiIGN5PSI0MDAiIHI9IjMzOCIgZmlsbD0iI2I5NDAyMyIvPgogPGNpcmNsZSBjeD0iNDAwIiBjeT0iNDAwIiByPSIzMjciIGZpbGw9InVybCgjY2hlZXNlKSIvPgogPGcgY2xpcC1wYXRoPSJ1cmwoI3BpZSkiPgo8Y2lyY2xlIGN4PSI5MCIgY3k9IjMxMCIgcj0iNCIgZmlsbD0iI2ZmZTk4ZiIgb3BhY2l0eT0iLjgiLz48Y2lyY2xlIGN4PSIxODAiIGN5PSI5MCIgcj0iMyIgZmlsbD0iI2Q4ODkzMiIgb3BhY2l0eT0iLjgiLz48Y2lyY2xlIGN4PSIyNTUiIGN5PSIyNTUiIHI9IjMiIGZpbGw9IiNmZmYwYWEiIG9wYWNpdHk9Ii44Ii8+PGNpcmNsZSBjeD0iMzcwIiBjeT0iMTA1IiByPSI0IiBmaWxsPSIjZmZlOThmIiBvcGFjaXR5PSIuOCIvPjxjaXJjbGUgY3g9IjUxNSIgY3k9IjI2MCIgcj0iMyIgZmlsbD0iI2Q4ODkzMiIgb3BhY2l0eT0iLjgiLz48Y2lyY2xlIGN4PSI2OTAiIGN5PSIxMzAiIHI9IjMiIGZpbGw9IiNmZmYwYWEiIG9wYWNpdHk9Ii44Ii8+PGNpcmNsZSBjeD0iNzQwIiBjeT0iMzYwIiByPSI0IiBmaWxsPSIjZmZlOThmIiBvcGFjaXR5PSIuOCIvPjxjaXJjbGUgY3g9IjEwMCIgY3k9IjQ4MCIgcj0iMyIgZmlsbD0iI2Q4ODkzMiIgb3BhY2l0eT0iLjgiLz48Y2lyY2xlIGN4PSIyMzAiIGN5PSI2OTAiIHI9IjMiIGZpbGw9IiNmZmYwYWEiIG9wYWNpdHk9Ii44Ii8+PGNpcmNsZSBjeD0iNDEwIiBjeT0iNDcwIiByPSI0IiBmaWxsPSIjZmZlOThmIiBvcGFjaXR5PSIuOCIvPjxjaXJjbGUgY3g9IjU5MCIgY3k9IjQ5MCIgcj0iMyIgZmlsbD0iI2Q4ODkzMiIgb3BhY2l0eT0iLjgiLz48Y2lyY2xlIGN4PSI3MDAiIGN5PSI1OTAiIHI9IjMiIGZpbGw9IiNmZmYwYWEiIG9wYWNpdHk9Ii44Ii8+PGNpcmNsZSBjeD0iMzcwIiBjeT0iNzEwIiByPSI0IiBmaWxsPSIjZmZlOThmIiBvcGFjaXR5PSIuOCIvPjxjaXJjbGUgY3g9IjEzNSIgY3k9IjYyNSIgcj0iMyIgZmlsbD0iI2Q4ODkzMiIgb3BhY2l0eT0iLjgiLz48Y2lyY2xlIGN4PSI1NzUiIGN5PSI4NSIgcj0iMyIgZmlsbD0iI2ZmZjBhYSIgb3BhY2l0eT0iLjgiLz48Y2lyY2xlIGN4PSIxNjUiIGN5PSIyMDUiIHI9IjM3IiBmaWxsPSIjOWUzMzFmIiBvcGFjaXR5PSIuNjUiLz48Y2lyY2xlIGN4PSIxNjUiIGN5PSIyMDUiIHI9IjM0IiBmaWxsPSIjYmY0NDJiIiBzdHJva2U9IiM4ZTJjMWMiIHN0cm9rZS13aWR0aD0iMyIvPjxlbGxpcHNlIGN4PSIxNTgiIGN5PSIxOTciIHJ4PSIxOCIgcnk9IjEzIiBmaWxsPSIjZGM2MjQwIiBvcGFjaXR5PSIuMzYiLz48Y2lyY2xlIGN4PSIzMDUiIGN5PSIxNDUiIHI9IjM0IiBmaWxsPSIjOWUzMzFmIiBvcGFjaXR5PSIuNjUiLz48Y2lyY2xlIGN4PSIzMDUiIGN5PSIxNDUiIHI9IjMxIiBmaWxsPSIjYmY0NDJiIiBzdHJva2U9IiM4ZTJjMWMiIHN0cm9rZS13aWR0aD0iMyIvPjxlbGxpcHNlIGN4PSIyOTgiIGN5PSIxMzciIHJ4PSIxNiIgcnk9IjEyIiBmaWxsPSIjZGM2MjQwIiBvcGFjaXR5PSIuMzYiLz48Y2lyY2xlIGN4PSI0NzUiIGN5PSIxOTIiIHI9IjM0IiBmaWxsPSIjOWUzMzFmIiBvcGFjaXR5PSIuNjUiLz48Y2lyY2xlIGN4PSI0NzUiIGN5PSIxOTIiIHI9IjMxIiBmaWxsPSIjYmY0NDJiIiBzdHJva2U9IiM4ZTJjMWMiIHN0cm9rZS13aWR0aD0iMyIvPjxlbGxpcHNlIGN4PSI0NjgiIGN5PSIxODQiIHJ4PSIxNiIgcnk9IjEyIiBmaWxsPSIjZGM2MjQwIiBvcGFjaXR5PSIuMzYiLz48Y2lyY2xlIGN4PSI2MjUiIGN5PSIxNDIiIHI9IjM0IiBmaWxsPSIjOWUzMzFmIiBvcGFjaXR5PSIuNjUiLz48Y2lyY2xlIGN4PSI2MjUiIGN5PSIxNDIiIHI9IjMxIiBmaWxsPSIjYmY0NDJiIiBzdHJva2U9IiM4ZTJjMWMiIHN0cm9rZS13aWR0aD0iMyIvPjxlbGxpcHNlIGN4PSI2MTgiIGN5PSIxMzQiIHJ4PSIxNiIgcnk9IjEyIiBmaWxsPSIjZGM2MjQwIiBvcGFjaXR5PSIuMzYiLz48Y2lyY2xlIGN4PSIyMTUiIGN5PSIzNDUiIHI9IjM3IiBmaWxsPSIjOWUzMzFmIiBvcGFjaXR5PSIuNjUiLz48Y2lyY2xlIGN4PSIyMTUiIGN5PSIzNDUiIHI9IjM0IiBmaWxsPSIjYmY0NDJiIiBzdHJva2U9IiM4ZTJjMWMiIHN0cm9rZS13aWR0aD0iMyIvPjxlbGxpcHNlIGN4PSIyMDgiIGN5PSIzMzciIHJ4PSIxOCIgcnk9IjEzIiBmaWxsPSIjZGM2MjQwIiBvcGFjaXR5PSIuMzYiLz48Y2lyY2xlIGN4PSI0MDUiIGN5PSIzMDUiIHI9IjM0IiBmaWxsPSIjOWUzMzFmIiBvcGFjaXR5PSIuNjUiLz48Y2lyY2xlIGN4PSI0MDUiIGN5PSIzMDUiIHI9IjMxIiBmaWxsPSIjYmY0NDJiIiBzdHJva2U9IiM4ZTJjMWMiIHN0cm9rZS13aWR0aD0iMyIvPjxlbGxpcHNlIGN4PSIzOTgiIGN5PSIyOTciIHJ4PSIxNiIgcnk9IjEyIiBmaWxsPSIjZGM2MjQwIiBvcGFjaXR5PSIuMzYiLz48Y2lyY2xlIGN4PSI1NzUiIGN5PSIzNTAiIHI9IjM0IiBmaWxsPSIjOWUzMzFmIiBvcGFjaXR5PSIuNjUiLz48Y2lyY2xlIGN4PSI1NzUiIGN5PSIzNTAiIHI9IjMxIiBmaWxsPSIjYmY0NDJiIiBzdHJva2U9IiM4ZTJjMWMiIHN0cm9rZS13aWR0aD0iMyIvPjxlbGxpcHNlIGN4PSI1NjgiIGN5PSIzNDIiIHJ4PSIxNiIgcnk9IjEyIiBmaWxsPSIjZGM2MjQwIiBvcGFjaXR5PSIuMzYiLz48Y2lyY2xlIGN4PSI2OTAiIGN5PSI1MDAiIHI9IjM0IiBmaWxsPSIjOWUzMzFmIiBvcGFjaXR5PSIuNjUiLz48Y2lyY2xlIGN4PSI2OTAiIGN5PSI1MDAiIHI9IjMxIiBmaWxsPSIjYmY0NDJiIiBzdHJva2U9IiM4ZTJjMWMiIHN0cm9rZS13aWR0aD0iMyIvPjxlbGxpcHNlIGN4PSI2ODMiIGN5PSI0OTIiIHJ4PSIxNiIgcnk9IjEyIiBmaWxsPSIjZGM2MjQwIiBvcGFjaXR5PSIuMzYiLz48Y2lyY2xlIGN4PSIxNTUiIGN5PSI1MzUiIHI9IjM3IiBmaWxsPSIjOWUzMzFmIiBvcGFjaXR5PSIuNjUiLz48Y2lyY2xlIGN4PSIxNTUiIGN5PSI1MzUiIHI9IjM0IiBmaWxsPSIjYmY0NDJiIiBzdHJva2U9IiM4ZTJjMWMiIHN0cm9rZS13aWR0aD0iMyIvPjxlbGxpcHNlIGN4PSIxNDgiIGN5PSI1MjciIHJ4PSIxOCIgcnk9IjEzIiBmaWxsPSIjZGM2MjQwIiBvcGFjaXR5PSIuMzYiLz48Y2lyY2xlIGN4PSIzMjAiIGN5PSI2MTAiIHI9IjM0IiBmaWxsPSIjOWUzMzFmIiBvcGFjaXR5PSIuNjUiLz48Y2lyY2xlIGN4PSIzMjAiIGN5PSI2MTAiIHI9IjMxIiBmaWxsPSIjYmY0NDJiIiBzdHJva2U9IiM4ZTJjMWMiIHN0cm9rZS13aWR0aD0iMyIvPjxlbGxpcHNlIGN4PSIzMTMiIGN5PSI2MDIiIHJ4PSIxNiIgcnk9IjEyIiBmaWxsPSIjZGM2MjQwIiBvcGFjaXR5PSIuMzYiLz48Y2lyY2xlIGN4PSI1MDAiIGN5PSI1NzAiIHI9IjM0IiBmaWxsPSIjOWUzMzFmIiBvcGFjaXR5PSIuNjUiLz48Y2lyY2xlIGN4PSI1MDAiIGN5PSI1NzAiIHI9IjMxIiBmaWxsPSIjYmY0NDJiIiBzdHJva2U9IiM4ZTJjMWMiIHN0cm9rZS13aWR0aD0iMyIvPjxlbGxpcHNlIGN4PSI0OTMiIGN5PSI1NjIiIHJ4PSIxNiIgcnk9IjEyIiBmaWxsPSIjZGM2MjQwIiBvcGFjaXR5PSIuMzYiLz48Y2lyY2xlIGN4PSI2NDUiIGN5PSI2ODAiIHI9IjM0IiBmaWxsPSIjOWUzMzFmIiBvcGFjaXR5PSIuNjUiLz48Y2lyY2xlIGN4PSI2NDUiIGN5PSI2ODAiIHI9IjMxIiBmaWxsPSIjYmY0NDJiIiBzdHJva2U9IiM4ZTJjMWMiIHN0cm9rZS13aWR0aD0iMyIvPjxlbGxpcHNlIGN4PSI2MzgiIGN5PSI2NzIiIHJ4PSIxNiIgcnk9IjEyIiBmaWxsPSIjZGM2MjQwIiBvcGFjaXR5PSIuMzYiLz48Y2lyY2xlIGN4PSIyODUiIGN5PSI3NDAiIHI9IjM3IiBmaWxsPSIjOWUzMzFmIiBvcGFjaXR5PSIuNjUiLz48Y2lyY2xlIGN4PSIyODUiIGN5PSI3NDAiIHI9IjM0IiBmaWxsPSIjYmY0NDJiIiBzdHJva2U9IiM4ZTJjMWMiIHN0cm9rZS13aWR0aD0iMyIvPjxlbGxpcHNlIGN4PSIyNzgiIGN5PSI3MzIiIHJ4PSIxOCIgcnk9IjEzIiBmaWxsPSIjZGM2MjQwIiBvcGFjaXR5PSIuMzYiLz48Y2lyY2xlIGN4PSI1MTUiIGN5PSI3NjAiIHI9IjM0IiBmaWxsPSIjOWUzMzFmIiBvcGFjaXR5PSIuNjUiLz48Y2lyY2xlIGN4PSI1MTUiIGN5PSI3NjAiIHI9IjMxIiBmaWxsPSIjYmY0NDJiIiBzdHJva2U9IiM4ZTJjMWMiIHN0cm9rZS13aWR0aD0iMyIvPjxlbGxpcHNlIGN4PSI1MDgiIGN5PSI3NTIiIHJ4PSIxNiIgcnk9IjEyIiBmaWxsPSIjZGM2MjQwIiBvcGFjaXR5PSIuMzYiLz48Y2lyY2xlIGN4PSI3MTAiIGN5PSIyOTAiIHI9IjM0IiBmaWxsPSIjOWUzMzFmIiBvcGFjaXR5PSIuNjUiLz48Y2lyY2xlIGN4PSI3MTAiIGN5PSIyOTAiIHI9IjMxIiBmaWxsPSIjYmY0NDJiIiBzdHJva2U9IiM4ZTJjMWMiIHN0cm9rZS13aWR0aD0iMyIvPjxlbGxpcHNlIGN4PSI3MDMiIGN5PSIyODIiIHJ4PSIxNiIgcnk9IjEyIiBmaWxsPSIjZGM2MjQwIiBvcGFjaXR5PSIuMzYiLz4KIDwhLS0gU2hhZGUgdGhlIHRocmVlIHBvcnRpb25zIGFyb3VuZCB0aGUgaGlnaGxpZ2h0ZWQgYm90dG9tLWxlZnQgcXVhcnRlci4gLS0+CiA8cGF0aCBkPSJNMCAwSDgwMFY0MDBINDAwVjgwMEgwWiIgZmlsbD0iIzEwMTMxYiIgb3BhY2l0eT0iLjY0Ii8+CiA8IS0tIEZvdXIgZXF1YWwgcXVhcnRlci1zbGljZSBjdXRzLiAtLT4KIDxwYXRoIGQ9Ik00MDAgMzVWNzY1TTM1IDQwMEg3NjUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZjJkMiIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9Ii45NiIvPgogPC9nPgogPGNpcmNsZSBjeD0iNDAwIiBjeT0iNDAwIiByPSIzNjUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZTA4MyIgc3Ryb2tlLXdpZHRoPSI1Ii8+CiA8Y2lyY2xlIGN4PSI0MDAiIGN5PSI0MDAiIHI9IjM3NCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZjhkMzZiIiBzdHJva2Utd2lkdGg9IjgiLz4KPC9nPjwvc3ZnPg==" alt="Illustrated pepperoni pizza divided into four equal quarters, with the bottom-left quarter highlighted"></div>
     </div>
   </section>
 
-  <section class="slice-section">
-    <h2>
-      18-INCH PIES.<br>
-      <span class="quarter">¼-PIE SLICES.</span><br>
-      SERIOUS INGREDIENTS.
-    </h2>
-    <p>
-      Yes. One slice is one quarter of an 18-inch pizza.
-      We weren't kidding when we said size matters.
-    </p>
+  <div class="tagline">Giant slices <span class="quarter" aria-hidden="true">◔</span> Scratch kitchen <span class="quarter" aria-hidden="true">◔</span> Big flavor</div>
+
+  <main>
+    <section class="process" id="our-dough" aria-labelledby="dough-title">
+      <div>
+        <h2 id="dough-title">Great pizza takes time!</h2>
+        <p>Our dough cold-ferments for 72 hours. Our sauce rests for 48 hours, giving the flavors time to come together. We believe that extra time makes a difference in every slice.</p>
+      </div>
+      <div class="time-stamps" aria-label="Our preparation times">
+        <div class="time"><strong>72</strong><span>hour dough ferment</span></div>
+        <div class="time"><strong>48</strong><span>hour sauce rest</span></div>
+      </div>
+    </section>
+
+    <section class="menu" id="menu" aria-labelledby="menu-title">
+      <p class="eyebrow" style="color:var(--red)">The first four</p>
+      <h2 class="section-heading" id="menu-title">Pick your slice</h2>
+      <p class="section-intro">A quarter of an 18-inch pie, made to hold with two hands.</p>
+      <div class="menu-grid">
+        <article class="pizza-card">
+          <div class="card-top"><h3>Cheese</h3><span class="slice-mark" aria-hidden="true">◔</span></div>
+          <p>Our classic slice: scratch-made dough, slow-rested sauce, and a generous blanket of mozzarella and provolone.</p>
+        </article>
+        <article class="pizza-card">
+          <div class="card-top"><h3>Pepperoni</h3><span class="slice-mark" aria-hidden="true">◔</span></div>
+          <p>Cheese, sauce, and pepperoni that curls up at the edges. A little crisp, a little cup, a lot of flavor.</p>
+        </article>
+        <article class="pizza-card">
+          <div class="card-top"><h3>Pepperoni &amp; Sausage</h3><span class="slice-mark" aria-hidden="true">◔</span></div>
+          <p>Pepperoni and savory sausage share the spotlight over mozzarella, provolone, and our slow-rested sauce.</p>
+        </article>
+        <article class="pizza-card">
+          <div class="card-top"><h3>Chicken Bacon Ranch</h3><span class="slice-mark" aria-hidden="true">◔</span></div>
+          <p>Ranch, seasoned chicken, and bacon on a cheesy, golden crust. Rich, savory, and ready for a couple of napkins.</p>
+        </article>
+      </div>
+    </section>
+
+    <aside class="requests" aria-labelledby="requests-title">
+      <h2 id="requests-title">Special Requests</h2>
+      <p>We’re happy to accommodate special requests on a whole pie. Slice toppings are set before baking, so we can’t adjust hot ingredients on a slice.</p>
+    </aside>
+
+    <section class="story" aria-labelledby="story-title">
+      <div class="story-inner">
+        <h2 id="story-title">Pizza should be simple. Great pizza isn't.</h2>
+        <p>Nice Slice started with a simple idea: make a damn good slice and care about every decision that goes into it.</p>
+        <p>Our ingredients are chosen because they have a job to do—not because a longer topping list sounds impressive. Every pizza is built around balance, consistency, and one question: is every ingredient doing its job?</p>
+      </div>
+    </section>
+  </main>
+
+  <section class="coming" aria-labelledby="coming-title">
+    <h2 id="coming-title">COMING SOON.</h2>
+    <p>Dayton, Ohio</p>
+    <a class="facebook" href="https://www.facebook.com/profile.php?id=61592067718554" target="_blank" rel="noopener noreferrer">FOLLOW NICE SLICE ON FACEBOOK</a>
   </section>
 
-  <section class="coming">
-    <h2>COMING SOON.</h2>
-    <h3>DAYTON, OHIO</h3>
-    <!-- Replace # with the Nice Slice Facebook page URL when ready. -->
-    <a class="facebook" href="https://www.facebook.com/share/1DfwvoeqjM/" target="_blank" rel="noopener noreferrer">
-      FOLLOW NICE SLICE ON FACEBOOK
-    </a>
-  </section>
-
-  <footer>&copy; 2026 Nice Slice. All rights reserved. 
-
-</footer>
+  <footer><strong>NICE SLICE</strong> · 18-inch pies. Quarter-pie slices. <span aria-hidden="true">◔</span> © 2026 Nice Slice.</footer>
 </body>
 </html>
